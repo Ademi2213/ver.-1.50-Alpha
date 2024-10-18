@@ -5,7 +5,8 @@
 
 3--> Wypisywanie wyniku operacji arytmetycznej.
 
--ver.-0.00-Alpha
+**-ver.-0.00-Alpha**
+
 1--> Aplikacja słurzy do Obliczania prostych działań.
 
 2--> Polega na dodawaniu badź innych operacjach arytmetycznych.
