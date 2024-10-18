@@ -1,4 +1,9 @@
-# ver.-0.00-Alpha
-1--> Aplikacja słurzy do gry w BlackJacka. <br>
-2--> Polega na tym, że  gracz stara się pokonać krupiera poprzez uzyskanie sumy jak najbliższej 21 punktów w kartach jednak nie przekraczając 21.<br>
-3--> Interakcja z użytkownikiem polega na decyzji z jego strony czy będzie dobierał czy nie będzie dobierał kart.
+# ver.-1.00-Alpha
+1--> Możliwość wpisania liczb1, znaku i liczby 2.
+2--> Poprawienie kodu aby był bardziej przejżysty i czytelny.
+3--> Wypisywanie wyniku operacji arytmetycznej.
+
+-ver.-0.00-Alpha
+1--> Aplikacja słurzy do Obliczania prostych działań.
+2--> Polega na dodawaniu badź innych operacjach arytmetycznych.
+3--> Interakcja z użytkownikiem polega na wpisaniu przez niego liczb jakie chce użyc w swoich działaniach.
