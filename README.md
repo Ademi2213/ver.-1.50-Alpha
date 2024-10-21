@@ -1,4 +1,4 @@
-**-ver.-0.10-Alpha**
+**-ver.-0.20-Alpha**
 
 1--> Została poprawiona Spójność kodu.
 
