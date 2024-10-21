@@ -25,22 +25,26 @@
 
     <script>
         function calculate() {
-            let o = document.getElementById('operator').value;
-            let n2 = parseFloat(document.getElementById('number2').value), wynik;
-            let n1 = parseFloat(document.getElementById('number1').value);
+            // Pobieranie wartości operatora oraz drugiej liczby
+            let o = document.getElementById('operator').value; // Operator (+, -, *, /)
+            let n2 = parseFloat(document.getElementById('number2').value), wynik; // Druga liczba i wynik
+            let n1 = parseFloat(document.getElementById('number1').value); // Pierwsza liczba
 
-            if (o === '+') wynik = n1 + n2;
-            else if (o === '-') wynik = n1 - n2;
-            else if (isNaN(n1) || isNaN(n2)) wynik = 'Wprowadź poprawne liczby!';
-            else if (o === '*') wynik = n1 * n2;
-            else if (o === '/') {
-                if (n2 === 0) {
-                    wynik = 'Nie można dzielić przez zero!';
+            // Obliczenia w zależności od wybranego operatora
+            if (o === '+') wynik = n1 + n2; // Dodawanie
+            else if (o === '-') wynik = n1 - n2; // Odejmowanie
+            else if (isNaN(n1) || isNaN(n2)) wynik = 'Wprowadź poprawne liczby!'; // Sprawdzanie poprawności liczb
+            else if (o === '*') wynik = n1 * n2; // Mnożenie
+            else if (o === '/') { // Dzielenie
+                if (n2 === 0) { // Sprawdzenie, czy dzielimy przez zero
+                    wynik = 'Nie można dzielić przez zero!'; // Komunikat o błędzie
                 } else {
-                    wynik = n1 / n2;
+                    wynik = n1 / n2; // Dzielenie
                 }
-            } else wynik = 'Nieznany operator!';
-            document.getElementById('result').textContent = 'Wynik: ' + wynik;
+            } else wynik = 'Nieznany operator!'; // Obsługa nieznanego operatora
+
+            // Wyświetlanie wyniku na stronie
+            document.getElementById('result').textContent = 'Wynik: ' + wynik; // Wynik
         }
     </script>
 </body>
