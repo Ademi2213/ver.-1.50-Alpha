@@ -1,3 +1,11 @@
+# ver.-1.00-Alpha
+
+1--> Dodano walidację operatora, aby upewnić się, że jest on jednym z dozwolonych znaków.\
+
+2--> Komunikaty o błędach są teraz bardziej przyjazne dla użytkownika.
+
+3--> Dodano funkcję, która włącza lub wyłącza przycisk obliczania w zależności od tego, czy wszystkie pola są wypełnione.
+
 **-ver.-0.80-Alpha**
 
 1--> Zostały zmienione nazwy na zrozumiałe [Np; jak było "n1" to teraz jest "firstNumber"]
