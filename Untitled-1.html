@@ -1,11 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kalkulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: calc(100% - 22px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="calculator">
+        <h2>Kalkulator.v.1.00</h2>
+        <input type="number" id="number1" placeholder="Pierwsza liczba" />
+        <input type="text" id="operator" placeholder="Operator (+, -, *, /)" />
+        <input type="number" id="number2" placeholder="Druga liczba" />
+        <button onclick="calculate()">Oblicz</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('number1').value);
+            const operator = document.getElementById('operator').value;
+            const num2 = parseFloat(document.getElementById('number2').value);
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = 'Wprowadź poprawne liczby!';
+            } else {
+                switch (operator) {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+                    case '-':
+                        result = num1 - num2;
+                        break;
+                    case '*':
+                        result = num1 * num2;
+                        break;
+                    case '/':
+                        if (num2 === 0) {
+                            result = 'Nie można dzielić przez zero!';
+                        } else {
+                            result = num1 / num2;
+                        }
+                        break;
+                    default:
+                        result = 'Nieznany operator!';
+                }
+            }
+
+            document.getElementById('result').textContent = 'Wynik: ' + result;
+        }
+    </script>
 </body>
 </html>
