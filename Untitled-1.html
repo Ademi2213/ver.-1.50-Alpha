@@ -51,43 +51,63 @@
 </head>
 <body>
     <div class="calculator">
-        <h2>Kalkulator</h2>
-        <input type="number" id="firstNumber" placeholder="Pierwsza liczba" />
-        <input type="text" id="operator" placeholder="Operator (+, -, *, /)" />
-        <input type="number" id="secondNumber" placeholder="Druga liczba" />
-        <button onclick="calculate()">Oblicz</button>
+        <h2>Kalkulator.v.1.00</h2>
+        <input type="number" id="firstNumber" placeholder="Pierwsza liczba" required />
+        <input type="text" id="operator" placeholder="Operator (+, -, *, /)" required />
+        <input type="number" id="secondNumber" placeholder="Druga liczba" required />
+        <button id="calculateButton" onclick="calculate()">Oblicz</button>
         <div class="result" id="result"></div>
     </div>
 
     <script>
-        function calculate() {
-            let operator = document.getElementById('operator').value; // Operator matematyczny
-            let secondNumber = parseFloat(document.getElementById('secondNumber').value); // Druga liczba
-            let firstNumber = parseFloat(document.getElementById('firstNumber').value); // Pierwsza liczba
+        const calculate = () => {
+            const operator = document.getElementById('operator').value.trim(); // Operator matematyczny
+            const secondNumber = parseFloat(document.getElementById('secondNumber').value); // Druga liczba
+            const firstNumber = parseFloat(document.getElementById('firstNumber').value); // Pierwsza liczba
             let result; // Zmienna do przechowywania wyniku
 
-            // Obliczenia w zależności od wybranego operatora
-            if (operator === '+') {
-                result = firstNumber + secondNumber; // Dodawanie
-            } else if (operator === '-') {
-                result = firstNumber - secondNumber; // Odejmowanie
-            } else if (isNaN(firstNumber) || isNaN(secondNumber)) {
+            // Sprawdzenie poprawności danych wejściowych
+            if (isNaN(firstNumber) || isNaN(secondNumber)) {
                 result = 'Wprowadź poprawne liczby!'; // Sprawdzanie poprawności liczb
-            } else if (operator === '*') {
-                result = firstNumber * secondNumber; // Mnożenie
-            } else if (operator === '/') {
-                if (secondNumber === 0) {
-                    result = 'Nie można dzielić przez zero!'; // Komunikat o błędzie
-                } else {
-                    result = firstNumber / secondNumber; // Dzielenie
-                }
-            } else {
+            } else if (!['+', '-', '*', '/'].includes(operator)) {
                 result = 'Nieznany operator!'; // Obsługa nieznanego operatora
+            } else {
+                // Obliczenia w zależności od wybranego operatora
+                switch (operator) {
+                    case '+':
+                        result = firstNumber + secondNumber; // Dodawanie
+                        break;
+                    case '-':
+                        result = firstNumber - secondNumber; // Odejmowanie
+                        break;
+                    case '*':
+                        result = firstNumber * secondNumber; // Mnożenie
+                        break;
+                    case '/':
+                        result = secondNumber === 0 ? 'Nie można dzielić przez zero!' : firstNumber / secondNumber; // Dzielenie
+                        break;
+                }
             }
 
             // Wyświetlanie wyniku na stronie
             document.getElementById('result').textContent = 'Wynik: ' + result; // Wynik
         }
+        
+        // Funkcja do obsługi włączania/wyłączania przycisku
+        const toggleButtonState = () => {
+            const firstNumber = document.getElementById('firstNumber').value.trim();
+            const secondNumber = document.getElementById('secondNumber').value.trim();
+            const operator = document.getElementById('operator').value.trim();
+            const button = document.getElementById('calculateButton');
+            button.disabled = !firstNumber || !secondNumber || !operator; // Włącz przycisk, jeśli wszystkie pola są wypełnione
+        }
+
+        // Nasłuchiwanie zmian w polach wejściowych
+        document.getElementById('firstNumber').addEventListener('input', toggleButtonState);
+        document.getElementById('secondNumber').addEventListener('input', toggleButtonState);
+        document.getElementById('operator').addEventListener('input', toggleButtonState);
     </script>
 </body>
 </html>
+
+
