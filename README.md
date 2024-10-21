@@ -1,3 +1,7 @@
+**-ver.-0.80-Alpha**
+
+1--> Zostały zmienione nazwy na zrozumiałe [Np; jak było "n1" to teraz jest "firstNumber"]
+
 **-ver.-0.60-Alpha**
 
 1--> Została poprawiona Spójność kodu.
