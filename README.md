@@ -1,9 +1,10 @@
-# ver.-1.00-Alpha
-1--> Możliwość wpisania liczb1, znaku i liczby 2.
+**-ver.-0.10-Alpha**
 
-2--> Poprawienie kodu aby był bardziej przejżysty i czytelny.
+1--> Została wprowadzone komentaże aby rozjaśnić kod [Moim zdaniem komentarze pomagają rozjaśnić kod i opisać, do czego służy dana funkcja bądź zmienna.]
 
-3--> Wypisywanie wyniku operacji arytmetycznej.
+**-ver.-0.10-Alpha**
+
+1--> Stworzony działający ale nieczytelny kod.
 
 **-ver.-0.00-Alpha**
 
