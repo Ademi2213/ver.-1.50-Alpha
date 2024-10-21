@@ -52,41 +52,41 @@
 <body>
     <div class="calculator">
         <h2>Kalkulator</h2>
-        <input type="number" id="number1" placeholder="Pierwsza liczba" />
+        <input type="number" id="firstNumber" placeholder="Pierwsza liczba" />
         <input type="text" id="operator" placeholder="Operator (+, -, *, /)" />
-        <input type="number" id="number2" placeholder="Druga liczba" />
+        <input type="number" id="secondNumber" placeholder="Druga liczba" />
         <button onclick="calculate()">Oblicz</button>
         <div class="result" id="result"></div>
     </div>
 
     <script>
         function calculate() {
-            let o = document.getElementById('operator').value; 
-            let n2 = parseFloat(document.getElementById('number2').value);
-            let n1 = parseFloat(document.getElementById('number1').value);
-            let wynik; // Zmienna do przechowywania wyniku
+            let operator = document.getElementById('operator').value; // Operator matematyczny
+            let secondNumber = parseFloat(document.getElementById('secondNumber').value); // Druga liczba
+            let firstNumber = parseFloat(document.getElementById('firstNumber').value); // Pierwsza liczba
+            let result; // Zmienna do przechowywania wyniku
 
             // Obliczenia w zależności od wybranego operatora
-            if (o === '+') {
-                wynik = n1 + n2; // Dodawanie
-            } else if (o === '-') {
-                wynik = n1 - n2; // Odejmowanie
-            } else if (isNaN(n1) || isNaN(n2)) {
-                wynik = 'Wprowadź poprawne liczby!'; // Sprawdzanie poprawności liczb
-            } else if (o === '*') {
-                wynik = n1 * n2; // Mnożenie
-            } else if (o === '/') {
-                if (n2 === 0) {
-                    wynik = 'Nie można dzielić przez zero!'; // Komunikat o błędzie
+            if (operator === '+') {
+                result = firstNumber + secondNumber; // Dodawanie
+            } else if (operator === '-') {
+                result = firstNumber - secondNumber; // Odejmowanie
+            } else if (isNaN(firstNumber) || isNaN(secondNumber)) {
+                result = 'Wprowadź poprawne liczby!'; // Sprawdzanie poprawności liczb
+            } else if (operator === '*') {
+                result = firstNumber * secondNumber; // Mnożenie
+            } else if (operator === '/') {
+                if (secondNumber === 0) {
+                    result = 'Nie można dzielić przez zero!'; // Komunikat o błędzie
                 } else {
-                    wynik = n1 / n2; // Dzielenie
+                    result = firstNumber / secondNumber; // Dzielenie
                 }
             } else {
-                wynik = 'Nieznany operator!'; // Obsługa nieznanego operatora
+                result = 'Nieznany operator!'; // Obsługa nieznanego operatora
             }
 
             // Wyświetlanie wyniku na stronie
-            document.getElementById('result').textContent = 'Wynik: ' + wynik; // Wynik
+            document.getElementById('result').textContent = 'Wynik: ' + result; // Wynik
         }
     </script>
 </body>
