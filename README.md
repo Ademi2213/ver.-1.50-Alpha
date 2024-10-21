@@ -1,14 +1,14 @@
-**-ver.-0.20-Alpha**
+**-ver.-0.60-Alpha**
 
 1--> Została poprawiona Spójność kodu.
 
 2--> Został usunięty nadmiar komentarzy.
 
-**-ver.-0.10-Alpha**
+**-ver.-0.40-Alpha**
 
 1--> Została wprowadzone komentaże aby rozjaśnić kod [Moim zdaniem komentarze pomagają rozjaśnić kod i opisać, do czego służy dana funkcja bądź zmienna.]
 
-**-ver.-0.10-Alpha**
+**-ver.-0.20-Alpha**
 
 1--> Stworzony działający ale nieczytelny kod.
 
