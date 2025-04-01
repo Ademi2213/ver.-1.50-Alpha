@@ -1,6 +1,28 @@
-# ver.-1.00-Alpha
+# ver.-1.50-Alpha
 
-1--> Dodano walidację operatora, aby upewnić się, że jest on jednym z dozwolonych znaków.\
+3--> Historia wyników:
+
+ Wprowadzono możliwość wyświetlania historii obliczeń, która pokazuje wynik poprzedniej operacji.
+
+**-ver.-1.40-Alpha**
+
+2--> Dodanie pierwiastkowania:
+
+- Dodano funkcję umożliwiającą obliczanie pierwiastka kwadratowego z liczby.
+
+**-ver.-1.20-Alpha**
+
+1--> Zmiana wyglądu aplikacji:
+
+- Przeprojektowano interfejs użytkownika, poprawiając estetykę i użyteczność kalkulatora.
+
+- Nowy design obejmuje ciemniejszy motyw kolorystyczny, zmienione przyciski oraz bardziej nowoczesny układ.
+
+Historia wyników jest wyświetlana w prawym górnym rogu, tuż obok bieżącego wyniku, umożliwiając użytkownikowi szybki dostęp do poprzednich obliczeń.
+
+**-ver.-1.00-Alpha**
+
+1--> Dodano walidację operatora, aby upewnić się, że jest on jednym z dozwolonych znaków.
 
 2--> Komunikaty o błędach są teraz bardziej przyjazne dla użytkownika.
 
