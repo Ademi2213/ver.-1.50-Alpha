@@ -1,16 +1,28 @@
-# ver.-1.50-Alpha
+# ver.-1.00
+
+1--> Nowy Tajemniczy przycisk:
+
+Dodano nowy tajemniczy przycisk "?" po jego aktywacji każde kliknięcie innego przycisku powoduje losowe przemieszczenie kalkulatora po ekranie.
+
+**-ver.-0.90-Alpha**
+
+1--> Nowy przycisk helikopter:
+
+Dodano przycisk z ikoną helikoptera, który po kliknięciu uruchamia obracanie się kalkulatora w zawrotnym tempie. Ponowne kliknięcie zatrzymuje animację, dodając zabawny i dynamiczny element do interfejsu.
+
+**-ver.-0.80-Alpha**
 
 3--> Historia wyników:
 
  Wprowadzono możliwość wyświetlania historii obliczeń, która pokazuje wynik poprzedniej operacji.
 
-**-ver.-1.40-Alpha**
+**-ver.-0.70-Alpha**
 
 2--> Dodanie pierwiastkowania:
 
 - Dodano funkcję umożliwiającą obliczanie pierwiastka kwadratowego z liczby.
 
-**-ver.-1.20-Alpha**
+**-ver.-0.60-Alpha**
 
 1--> Zmiana wyglądu aplikacji:
 
@@ -20,7 +32,7 @@
 
 Historia wyników jest wyświetlana w prawym górnym rogu, tuż obok bieżącego wyniku, umożliwiając użytkownikowi szybki dostęp do poprzednich obliczeń.
 
-**-ver.-1.00-Alpha**
+**-ver.-0.50-Alpha**
 
 1--> Dodano walidację operatora, aby upewnić się, że jest on jednym z dozwolonych znaków.
 
@@ -28,21 +40,21 @@ Historia wyników jest wyświetlana w prawym górnym rogu, tuż obok bieżącego
 
 3--> Dodano funkcję, która włącza lub wyłącza przycisk obliczania w zależności od tego, czy wszystkie pola są wypełnione.
 
-**-ver.-0.80-Alpha**
+**-ver.-0.40-Alpha**
 
 1--> Zostały zmienione nazwy na zrozumiałe [Np; jak było "n1" to teraz jest "firstNumber"]
 
-**-ver.-0.60-Alpha**
+**-ver.-0.30-Alpha**
 
 1--> Została poprawiona Spójność kodu.
 
 2--> Został usunięty nadmiar komentarzy.
 
-**-ver.-0.40-Alpha**
+**-ver.-0.20-Alpha**
 
 1--> Została wprowadzone komentaże aby rozjaśnić kod [Moim zdaniem komentarze pomagają rozjaśnić kod i opisać, do czego służy dana funkcja bądź zmienna.]
 
-**-ver.-0.20-Alpha**
+**-ver.-0.10-Alpha**
 
 1--> Stworzony działający ale nieczytelny kod.
 
