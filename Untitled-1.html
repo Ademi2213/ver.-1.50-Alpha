@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kalkulator</title>
     <style>
         * {
@@ -18,15 +18,21 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
+            user-select: none;
         }
 
         .calculator {
+            position: absolute;
+            left: calc(50% - 175px);
+            top: calc(50vh - 150px);
             background: #2a2a3c;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             text-align: center;
             width: 350px;
+            transition: transform 0.3s ease, left 0.3s ease, top 0.3s ease;
         }
 
         #display {
@@ -48,6 +54,7 @@
             color: #aaa;
             text-align: right;
             margin-bottom: 15px;
+            min-height: 18px;
         }
 
         .buttons {
@@ -66,6 +73,7 @@
             background: #444459;
             color: white;
             transition: 0.3s;
+            user-select: none;
         }
 
         button:hover {
@@ -82,7 +90,6 @@
 
         .equal {
             background: #00cec9;
-            grid-column: span 1;
         }
 
         .equal:hover {
@@ -104,13 +111,52 @@
         .backspace:hover {
             background: #ffcc80;
         }
+
+        .helicopter {
+            background: #00b894;
+        }
+
+        .helicopter:hover {
+            background: #55efc4;
+        }
+
+        #randomMoveBtn {
+            background: #00b894;
+            transition: background-color 0.3s;
+        }
+
+        #randomMoveBtn:hover {
+            background: #55efc4;
+        }
+
+        #randomMoveBtn.active {
+            background: #b71c1c !important;
+            color: white;
+        }
+
+        /* Kontener na przyciski specjalne pod kalkulatorem */
+        .special-buttons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        /* ANIMACJA OBRACANIA */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .spinning {
+            animation: spin 0.7s linear infinite;
+        }
     </style>
 </head>
 <body>
-
-    <div class="calculator">
-        <input type="text" id="display" disabled>
-        <div id="history"></div> <!-- Historia kalkulatora poniżej wyświetlacza -->
+    <div class="calculator" id="calculator">
+        <input type="text" id="display" disabled />
+        <div id="history"></div>
         <div class="buttons">
             <button class="clear" onclick="clearDisplay()">C</button>
             <button class="backspace" onclick="deleteLast()">⌫</button>
@@ -130,63 +176,110 @@
             <button onclick="appendToDisplay('1')">1</button>
             <button onclick="appendToDisplay('2')">2</button>
             <button onclick="appendToDisplay('3')">3</button>
-
             <button class="operator" onclick="calculateSqrt()">√</button>
+
             <button onclick="appendToDisplay('.')">.</button>
             <button onclick="appendToDisplay('0')">0</button>
             <button onclick="toggleSign()">+/-</button>
-
             <button class="equal" onclick="calculateResult()">=</button>
+        </div>
+
+        <div class="special-buttons">
+            <button class="helicopter" onclick="buttonClicked(spinCalculator)">🚁</button>
+            <button id="randomMoveBtn" onclick="toggleRandomMove()">?</button>
         </div>
     </div>
 
-    <script>
-        let display = document.getElementById("display");
-        let history = document.getElementById("history");
-        let previousResult = ""; // Przechowywanie poprzedniego wyniku
+<script>
+    let display = document.getElementById("display");
+    let history = document.getElementById("history");
+    let calculator = document.getElementById("calculator");
+    let randomMoveBtn = document.getElementById("randomMoveBtn");
 
-        function appendToDisplay(value) {
-            if (display.value === "Error") {
-                display.value = "";  // Reset display after error
-            }
-            display.value += value;
-        }
+    let previousResult = "";
+    let randomMoveActive = false;
 
-        function clearDisplay() {
+    function appendToDisplay(value) {
+        if (display.value === "Error") {
             display.value = "";
-            history.textContent = ""; // Reset history
         }
+        display.value += value;
+        triggerRandomMoveIfActive();
+    }
 
-        function deleteLast() {
-            display.value = display.value.slice(0, -1);
+    function clearDisplay() {
+        display.value = "";
+        history.textContent = "";
+        triggerRandomMoveIfActive();
+    }
+
+    function deleteLast() {
+        display.value = display.value.slice(0, -1);
+        triggerRandomMoveIfActive();
+    }
+
+    function calculateResult() {
+        try {
+            let result = eval(display.value);
+            history.textContent = previousResult ? previousResult : "";
+            previousResult = result;
+            display.value = result;
+        } catch {
+            display.value = "Error";
         }
+        triggerRandomMoveIfActive();
+    }
 
-        function calculateResult() {
-            try {
-                let result = eval(display.value);
-                history.textContent = previousResult ? previousResult : ""; // Pokazuje poprzedni wynik
-                previousResult = result; // Zapisanie obecnego wyniku jako poprzedni
-                display.value = result;
-            } catch {
-                display.value = "Error";
-            }
+    function toggleSign() {
+        if (display.value !== "") {
+            display.value = (parseFloat(display.value) * -1).toString();
         }
+        triggerRandomMoveIfActive();
+    }
 
-        function toggleSign() {
-            if (display.value !== "") {
-                display.value = (parseFloat(display.value) * -1).toString();
-            }
+    function calculateSqrt() {
+        let num = parseFloat(display.value);
+        if (num < 0) {
+            display.value = "Error";
+        } else {
+            display.value = Math.sqrt(num).toString();
         }
+        triggerRandomMoveIfActive();
+    }
 
-        function calculateSqrt() {
-            let num = parseFloat(display.value);
-            if (num < 0) {
-                display.value = "Error";
-            } else {
-                display.value = Math.sqrt(num).toString();
-            }
+    function spinCalculator() {
+        calculator.classList.toggle("spinning");
+    }
+
+    function toggleRandomMove() {
+        randomMoveActive = !randomMoveActive;
+        if (randomMoveActive) {
+            randomMoveBtn.classList.add("active");
+        } else {
+            randomMoveBtn.classList.remove("active");
         }
-    </script>
+    }
 
+    function triggerRandomMoveIfActive() {
+        if (!randomMoveActive) return;
+
+        // Losowa pozycja kalkulatora na ekranie, w granicach widoku
+        const maxX = window.innerWidth - calculator.offsetWidth;
+        const maxY = window.innerHeight - calculator.offsetHeight;
+
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+
+        calculator.style.left = randomX + "px";
+        calculator.style.top = randomY + "px";
+    }
+
+    // Uniwersalny handler, przydatny jeśli chcesz podpiąć inne przyciski np. helikoptera
+    function buttonClicked(callback) {
+        callback();
+        // Jeśli aktywny randomMove, to przemieść kalkulator po kliknięciu przycisku helikoptera
+        triggerRandomMoveIfActive();
+    }
+</script>
 </body>
 </html>
